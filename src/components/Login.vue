@@ -46,6 +46,7 @@ export default {
     login () {
       this.$refs.loginFormRef.validate(valid => {
         console.log(valid)
+        this.$router.push('/page1')
       })
     }
   }
