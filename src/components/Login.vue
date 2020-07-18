@@ -1,35 +1,26 @@
 <template>
-  <div>
-    <!-- 背景图 -->
-    <div class='background'>
-      <img src="../assets/background.jpg" width="100%" height="100%" alt="img" />
-    </div>
-    <div class="login_sign">
-      <img src="../assets/sign.png" alt="img" />
-      <h1 class="h1">巴蜀农经</h1>
-      <h2>智慧农业研究生产系统</h2>
-    </div>
+  <div class="container">
     <div class='login_box'>
+      <div class="login_sign">
+        <!-- 标志 -->
+        <img src="../assets/sign.png" class="sign_img" />
+        <h1>巴蜀农经</h1>
+        <h2>智慧农业研究生产系统</h2>
+      </div>
       <div class='line'></div>
       <!-- 表单 -->
       <el-form :model="loginForm" :rules="loginFormRules" ref="loginFormRef" label-width="0px" class='login_form'>
-        <h3>登录/Login</h3>
+        <h3 style="color:#ffff">登录/Login</h3>
         <!-- 用户名 -->
-        <el-form-item prop="username">
-          <el-input v-model="loginForm.username"></el-input>
-        </el-form-item>
+        <input class="input" v-model="loginForm.username" />
         <!-- 密码 -->
-        <el-form-item prop="password">
-          <el-input v-model="loginForm.password" type="password"></el-input>
-        </el-form-item>
+        <input class="input" v-model="loginForm.password" type="password" />
         <!-- 验证码 -->
-        <el-form-item prop="verifycode">
-          <el-input class="verifycode" style="width:150px" v-model="loginForm.verifycode"></el-input>
-          <img src="../assets/verifycode.png" class="verifyimg" />
-        </el-form-item>
+        <input class="input" style="width:120px" v-model="loginForm.verifycode" />
+        <img src="../assets/verifycode.png" class="verifyimg" />
         <!-- 按钮 -->
-        <el-form-item class="button">
-          <el-button type="primary" style="width: 280px" @click="login">登录</el-button>
+        <el-form-item class='button'>
+          <el-button type="primary" style="width: 230px" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -44,7 +35,7 @@ export default {
       loginForm: {
         username: 'lalala',
         password: '666666',
-        verifycode: null
+        verifycode: '验证码'
       },
       // 表单合法性验证规则
       loginFormRules: {
@@ -69,66 +60,86 @@ export default {
 }
 </script>
 
-<style scoped>
-.h1 {
-  position: relative;
+<style>
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, #302b63, #b7f8db);
+}
+.login_box {
+  width: 700px;
+  height: 350px;
+  background-color: #2a5298;
+  border-radius: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  opacity: 0.8;
+  transform: translate(-50%, -50%);
+  /* animation: in 0.5s ease-out forwards; */
+}
+.sign_img {
+  width: 150px;
+  position: absolute;
+  left: 10%;
+}
+h1 {
+  color: #ffffff;
+  position: absolute;
   left: 15%;
+  top: 70%;
+}
+h2 {
+  color: #ffffff;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+}
+.login_sign {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  left: 10%;
+  top: 10%;
 }
 .line {
   width: 3px;
-  height: 300px;
+  height: 250px;
   background-color: rgb(255, 255, 255);
   border-radius: 3px;
   position: absolute;
   left: 50%;
-  top: 10%;
-}
-.background {
-  filter: blur(3px);
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  position: absolute;
-}
-.login_sign {
-  position: absolute;
-  left: 30%;
-  top: 25%;
-  z-index: 2;
-}
-.login_box {
-  width: 800px;
-  height: 400px;
-  background-color: lightslategray;
-  border-radius: 3px;
-  position: absolute;
-  left: 25%;
-  top: 20%;
-  z-index: 1;
-  opacity: 0.5;
+  top: 15%;
 }
 .login_form {
   position: absolute;
-  bottom: 0px;
   width: 40%;
-  padding: 0 20px;
   top: 10%;
-  left: 55%;
-  box-sizing: border-box;
+  left: 60%;
+  /* box-sizing: border-box; */
   z-index: 2;
 }
-.verifycode {
-  position: absolute;
-  width: 50ox;
+.input {
+  background: none;
+  width: 80%;
+  border: 0;
+  outline: none;
+  color: rgb(255, 255, 255);
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  font-size: 15px;
 }
 .verifyimg {
   position: absolute;
-  width: 130px;
-  height: 40px;
-  left: 55%;
+  width: 90px;
+  height: 25px;
+  left: 50%;
+  top: 60%;
 }
 .button {
-  position: absolute;
-  top: 70%;
+  padding: 10px 0;
+  border-radius: 20px;
 }
 </style>
