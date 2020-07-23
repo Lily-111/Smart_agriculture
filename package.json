@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
+    "ezuikit": "^1.0.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.2.0"
