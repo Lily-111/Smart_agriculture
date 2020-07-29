@@ -145,6 +145,9 @@ export default {
   data () {
     return {
       show: 'none',
+      token:" ",
+      project_id:"09340f52b60025af2ffec01a2c1ba7d2",
+      device_id:"8781fe96-2b37-471f-820e-fa092bb2d67d",
       carddata: [{
         card_number: 'FH01-001',
         card_location: '一号园区(100,200)',
@@ -188,18 +191,18 @@ export default {
         htl: 150,
         hll: 66,
         hjl: 200
-      }],
-      card_number: 'FH01-001',
-      card_location: '一号园区(600，500)',
-      danger: true
+      }]
     }
   },
   mounted () {
-    // var that = this// 保留this指向vue界面的状态
+    var that = this// 保留this指向vue界面的状态
+    var authtoken
+    //token获取
+    const baseurl1 = '/api/v3/auth/tokens'
     this.$axios({
       method: 'POST',
-      url: 'https://iam.cn-north-4.myhuaweicloud.com/v3/auth/tokens',
-      params: {
+      url: baseurl1,
+      data: {
         auth: {
           identity: {
             methods: ['password'],
@@ -221,14 +224,39 @@ export default {
         }
       },
       headers: {
-        'X-Auth-Token': '***',
-        'User-Agent': 'API Explorer',
         'Content-Type': 'application/json;charset=UTF-8'
       }
     }).then(res => {
-      console.log(res)// res变量获取到的打印出来
-      console.log(res.data.data) // 请求成功返回的数据
+      var headers=res.headers
+      var arry=[]
+      let x
+      let i=0
+      //获取x-auth-token
+      for(x in headers){
+         arry[i] = headers[x]
+         i++  
+      }
+      this.token =arry[15]
+      authtoken=arry[15]
+      //获取温度数据
+      var baseurl2 = '/iotat/v5/iot/09340f52b60025af2ffec01a2c1ba7d2/devices/8781fe96-2b37-471f-820e-fa092bb2d67d/shadow'
+      this.$axios({
+         method:'GET',
+         url:baseurl2,
+         headers:{
+           'X-Auth-Token':  authtoken
+           
+     }
+   }).then(res=>{
+     console.log(res)
+     console.log(res.data.shadow[0].reported.properties.Humidity)
+     this.carddata[0].temperature=res.data.shadow[0].reported.properties.Temperature
+     this.carddata[0].illumination=res.data.shadow[0].reported.properties.luminance
+     this.carddata[0].humidity=res.data.shadow[0].reported.properties.Humidity
+   })
     })
+    
+
   },
   methods: {
     topage1 () {
