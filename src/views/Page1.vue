@@ -3,10 +3,10 @@
     <el-container id="page">
       <el-aside width="73px">
         <div class="asidelogo1">
-          <img src="../assets/thermometer2.png">
+          <img src="../assets/thermometer2.png" />
         </div>
         <div class="asidelogo2">
-          <img @click="topage2" src="../assets/insect1.png">
+          <img @click="topage2" src="../assets/insect1.png" />
         </div>
       </el-aside>
       <el-main class="left">
@@ -18,33 +18,49 @@
           <div class="tomatoroom1">小番茄培养室</div>
           <div class="tomatoroom2">Small tomato cultivation room</div>
         </div>
-        <div class="tomato_picture"><img src="../assets/tomato.jpg" alt=""></div>
+        <div class="tomato_picture">
+          <img src="../assets/tomato.jpg" alt="" />
+        </div>
         <div class="room2">
           <div class="orchidroom1">兰花培养室</div>
           <div class="orchidroom2">Small orchid cultivation room</div>
         </div>
-        <div class="orchid_picture"><img src="../assets/orchid.jpg" alt=""></div>
+        <div class="orchid_picture">
+          <img src="../assets/orchid.jpg" alt="" />
+        </div>
         <div class="room3">
           <div class="Polygonatumroom1">黄精培养室</div>
           <div class="Polygonatumroom2">Polygonatum sibiricum room</div>
         </div>
-        <div class="Polygonatum_picture"><img src="../assets/Polygonatum.jpg" alt=""></div>
+        <div class="Polygonatum_picture">
+          <img src="../assets/Polygonatum.jpg" alt="" />
+        </div>
       </el-main>
       <el-main class="middle">
-        <div class="middle_tittle">涪韩科技全体成员：恭祝2020全国大学生物联网设计竞赛顺利举行</div>
+        <div class="middle_tittle">
+          恭祝四川省“挑战杯”大学生课外学术科技作品竞赛顺利举行
+        </div>
         <div class="live_tittle">植物组培室（直播）</div>
         <div class="live">
-          <iframe src="static/video.html" width="687px" height="450px" frameborder="0"></iframe>
+          <iframe
+            src="static/video.html"
+            width="687px"
+            height="450px"
+            frameborder="0"
+          ></iframe>
         </div>
-        <div class="parameter">植物组培室实验参数 </div>
-        <div class="parameter_form"><img src="../assets/page1.png" alt=""></div>
+        <div class="parameter">植物组培室实验参数</div>
+        <div class="parameter_form">
+          <!-- <img src="../assets/page1.png" alt="" /> -->
+          <parameter-form></parameter-form>
+        </div>
       </el-main>
       <el-main class="right">
-        <div class="iconfont right_tittle">&#xe5ca;植物生长检测 </div>
+        <div class="iconfont right_tittle">&#xe5ca;植物生长检测</div>
         <div class="right_status">小番茄1株生长状态-实时监测</div>
         <div class="right_statusform">
           <div class="growdata">果苗生长数据</div>
-          <div class="growlength">长度：{{ length }} </div>
+          <div class="growlength">长度：{{ length }}</div>
           <div class="growheight">宽度：{{ height }}</div>
           <div class="livestatus">果苗实时状态</div>
           <div class="statusdata">{{ livestasus }}</div>
@@ -54,7 +70,16 @@
           <div class="Testingdata">{{ Testingdata }}</div>
         </div>
         <div class="growfrom">生长情况曲线图</div>
-        <div id="myChart" :style="{width: '300px', height: '250px', position: 'absolute',left: '1130px',top: '770px'}">
+        <div
+          id="myChart"
+          :style="{
+            width: '300px',
+            height: '250px',
+            position: 'absolute',
+            left: '1130px',
+            top: '770px'
+          }"
+        >
           <!-- <img src="../assets/zxt.png" alt="">  class="growfrom_data"  -->
         </div>
       </el-main>
@@ -63,51 +88,55 @@
 </template>
 
 <script>
+import parameterForm from '../components/parameterForm.vue';
 export default {
-  data () {
+  components: { parameterForm },
+  data() {
     return {
-      length: '200mm',
-      height: '210mm',
-      livestasus: '正常',
-      checkdata: '健康',
-      Testingdata: '无果实'
-    }
+      length: "200mm",
+      height: "210mm",
+      livestasus: "正常",
+      checkdata: "健康",
+      Testingdata: "无果实"
+    };
   },
-  mounted () {
-    this.drawLine()
+  mounted() {
+    this.drawLine();
   },
   methods: {
-    topage2 () {
-      this.$router.push('/page2')
+    topage2() {
+      this.$router.push("/page2");
     },
-    drawLine () {
+    drawLine() {
       // 基于准备好的dom，初始化echarts实例
-      const myChart = this.$echarts.init(document.getElementById('myChart'))
+      const myChart = this.$echarts.init(document.getElementById("myChart"));
       // 绘制图表
       var option = {
         xAxis: {
-          type: 'category',
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         },
         yAxis: {
-          type: 'value'
+          type: "value"
         },
-        series: [{
-          data: [43, 55, 58, 65, 70, 73, 76],
-          type: 'line',
-          showSymbol: true
-        }],
+        series: [
+          {
+            data: [43, 55, 58, 65, 70, 73, 76],
+            type: "line",
+            showSymbol: true
+          }
+        ],
         label: {
           show: true
         }
-      }
-      myChart.setOption(option)
+      };
+      myChart.setOption(option);
     }
   }
-}
+};
 </script>
 
-<style >
+<style>
 @font-face {
   font-family: "iconfont";
   src: url("../assets/iconfont/iconfont.eot");
@@ -298,12 +327,11 @@ export default {
 }
 .middle .middle_tittle {
   position: absolute;
-  padding-top: 19px;
   left: 408px;
   top: 67px;
   width: 687px;
-  height: 41px;
-  line-height: 20px;
+  height: 60px;
+  line-height: 60px;
   border-radius: 10px 10px 10px 10px;
   background-color: rgba(63, 203, 176, 1);
   text-align: center;
@@ -342,10 +370,10 @@ export default {
   text-align: left;
   font-family: SourceHanSansSC-regular;
 }
-.middle .parameter_form img {
+.middle .parameter_form  {
   position: absolute;
   left: 408px;
-  top: 808px;
+  top: 840px;
   width: 687px;
   height: 193px;
   border-radius: 10px 10px 10px 10px;

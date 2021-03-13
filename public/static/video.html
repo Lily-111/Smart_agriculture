@@ -8,22 +8,26 @@
 </head>
 
 <body>
-  <iframe
-    src="https://open.ys7.com/ezopen/h5/iframe_se?url=ezopen://open.ys7.com/D94272617/1.hd.live&autoplay=0&accessToken=at.2aiicgcg8c6wlvgt7hdqbzhw7l37atrq-2rtf8dzo28-1wnyc20-9nvrz4rmp&templete=2"
-    width="600px" height="400px" id="ysopen" allowfullscreen>
-  </iframe>
-  <script>
-    /* 获取播放器元素 */
-    var player = document.getElementById('ysOpenDevice').contentWindow;
-    /* iframe 支持方法 */
-    player.postMessage("play", "https://open.ys7.com/ezopen/h5/iframe") /* 播放 */
-    player.postMessage("stop", "https://open.ys7.com/ezopen/h5/iframe") /* 结束 */
-    player.postMessage("capturePicture", "https://open.ys7.com/ezopen/h5/iframe") /* 截图 */
-    player.postMessage("openSound", "https://open.ys7.com/ezopen/h5/iframe") /* 开启声音 */
-    player.postMessage("closeSound", "https://open.ys7.com/ezopen/h5/iframe") /* 关闭声音 */
-    player.postMessage("startSave", "https://open.ys7.com/ezopen/h5/iframe") /* 开始录制 */
-    player.postMessage("stopSave", "https://open.ys7.com/ezopen/h5/iframe") /* 结束录制 */
-  </script>
+  
+<iframe
+src="https://open.ys7.com/ezopen/h5/iframe_se?url=ezopen://open.ys7.com/D94272617/1.live&autoplay=0&audio=1&accessToken=at.49jmefggbyey1hu598ipxqpg7b81qjw6-54wb3rm4t4-0ckb0r4-ikftuqxjx"
+width="600"
+height="400"
+id="ysopen"
+allowfullscreen
+>
+</iframe>
+<script>/* 获取播放器元素 */
+var player = document.getElementById('ysOpenDevice').contentWindow;
+/* iframe 支持方法 */
+player.postMessage("play", "https://open.ys7.com/ezopen/h5/iframe") /* 播放 */
+player.postMessage("stop", "https://open.ys7.com/ezopen/h5/iframe") /* 结束 */
+player.postMessage("capturePicture", "https://open.ys7.com/ezopen/h5/iframe") /* 截图 */
+player.postMessage("openSound", "https://open.ys7.com/ezopen/h5/iframe") /* 开启声音 */
+player.postMessage("closeSound", "https://open.ys7.com/ezopen/h5/iframe") /* 关闭声音 */
+player.postMessage("startSave", "https://open.ys7.com/ezopen/h5/iframe") /* 开始录制 */
+player.postMessage("stopSave", "https://open.ys7.com/ezopen/h5/iframe") /* 结束录制 */</script>
+
 </body>
 
 </html>

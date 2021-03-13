@@ -31,10 +31,11 @@
         <div class="Polygonatum_picture"><img src="../assets/Polygonatum.jpg" alt=""></div>
       </el-main>
       <el-main class="middle">
-        <div class="middle_tittle">涪韩科技全体成员：恭祝2020全国大学生物联网设计竞赛顺利举行</div>
+        <div class="middle_tittle">恭祝四川省“挑战杯”大学生课外学术科技作品竞赛顺利举行</div>
         <div class="live_tittle">园区灌溉情况 </div>
         <div class="map">
-          <img src="../assets/map.png">
+          <!-- <img src="../assets/map.png"> -->
+        <heat-map></heat-map>
         </div>
         <div class="hei" v-bind:style="{display:show}" @click="stop">
           <img src="../assets/1.png" alt="">
@@ -141,11 +142,14 @@
 </template>
 
 <script>
+import heatMap from '../components/heatMap.vue'
+
 export default {
+  components: { heatMap },
   data () {
     return {
       show: 'none',
-      token:" ",
+      token:'',
       project_id:"09340f52b60025af2ffec01a2c1ba7d2",
       device_id:"8781fe96-2b37-471f-820e-fa092bb2d67d",
       carddata: [{
@@ -245,7 +249,6 @@ export default {
          url:baseurl2,
          headers:{
            'X-Auth-Token':  authtoken
-           
      }
    }).then(res=>{
      console.log(res)
@@ -522,20 +525,20 @@ export default {
   height: 394px;
   border-radius: 10px 10px 10px 10px;
 } */
-.map img {
+.map  {
   /* width: 687px;
   height: 394px; */
   position: absolute;
   left: 408px;
   top: 290px;
   width: 687px;
-  height: 394px;
+  height: 500px;
   border-radius: 10px 10px 10px 10px;
 }
 .middle .download {
   position: absolute;
   left: 414px;
-  top: 645px;
+  top: 280px;
   width: 165px;
   height: 22px;
   line-height: 20px;
